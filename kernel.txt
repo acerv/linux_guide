@@ -62,7 +62,7 @@ Signing kernel modules
 
         sudo make -C /usr/src/kernel scripts
 
-    The it's possible to use a Makefile rule for automatic sign, just in case
+    Then it's possible to use a Makefile rule for automatic sign, just in case
     the kernel module must be loaded manually for tests:
 
     Makefile sign rule:
