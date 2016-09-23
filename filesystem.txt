@@ -28,11 +28,6 @@ Hierarchy
 Create/Repair
 =============
     
-    The filesystem tools are starting with the following prefixes:
-    
-    * mkfs: make/creation tools
-    * fsck: check/repair tools
-
     To create a filesystem:
 
         mkfs -t <filesystem type> <device>
@@ -65,8 +60,14 @@ Create/Repair
 Partitioning
 ============
 
-    * fdisk  <device>: the basic textline tool for partitioning
-    * cfdisk <device>: start an ncurses interface for fdisk
+    For text-based tool for partitioning:
+        
+        # fdisk [-l] <device>  # use -l to list all the partitions
+        > m                    # show help message
+
+    For ncurses tool for partitioning:
+
+        # cfdisk <device>
 
 ========
 Mounting
@@ -74,6 +75,5 @@ Mounting
 
     To mount a filesystem in a binary format (.iso, .bin, .extX etc.):
 
-        # mount [-r] -o loop <file> <directory>
+        # mount [-r] -o loop <file> <directory>   # use -r for read-only
 
-    Using -r, the filesystem will be read-only.
