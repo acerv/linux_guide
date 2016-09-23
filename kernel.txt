@@ -6,7 +6,9 @@ Andrea Cervesato <sawk.ita@gmail.com>
 Informations
 ============
 
-    * uname -r: return the version of the running kernel
+    To show the current kernel version:
+
+        # uname -r
 
 ================
 Modules handling
@@ -15,12 +17,36 @@ Modules handling
     The installed kernel modules are located int the /lib/modules/<kernel version>/build 
     directory.
 
-    * insmod <module file>: insert a module into the kernel
-    * rmmod <module file>: remove a loaded module from the kernel
-    * modinfo [-k <kernel version>] <module>: informations about installed 
-      module in the given kernel version
-    * lsmod: list all loaded modules on system
-    * modprobe <module>: load an installed module
+        # modinfo [-k <kernel version>] <module name>  # info about installed module
+        # insmod <mod name>.ko                         # load a module into the kernel
+        # rmmod <mod name>.ko                          # removed a module from the kernel
+        # modprobe <mod name>                          # load an installed module
+        # lsmod                                        # list all the loaded modules
+
+============
+Log handling
+============
+
+    The kernel levels are the following:
+
+        0 - Emergency
+        1 - Alert
+        2 - Critical
+        3 - Error
+        4 - Warning
+        5 - Notice
+        6 - Informations
+        7 - Debug
+
+    dmesg is used to show all kernel messages:
+
+        # dmesg
+        # dmesg -n <log level>                # turn off all levels under it
+        # echo "N" > /proc/sys/kernel/printk  # same as the command before
+
+    To emulate printk logging level, echo can be used:
+
+        # echo "<N> Message" > /dev/msg       # show messages under N logging level
 
 ==============
 Create modules
@@ -28,6 +54,9 @@ Create modules
 
     A great guide can be found here: 
     http://tldp.org/LDP/lkmpg/2.6/html/lkmpg.html
+
+    The coding style can be found here:
+    https://www.kernel.org/doc/Documentation/CodingStyle
 
 ============================
 Makefile for cross compiling
