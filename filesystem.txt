@@ -1,0 +1,79 @@
+
+LINUX TOOLS DOCUMENTATION FILE
+Andrea Cervesato <sawk.ita@gmail.com>
+
+=========
+Hierarchy
+=========
+
+    /bin    essential command binaries
+    /boot   bootloader files
+    /dev    device files
+    /proc   the virtual filesystem for processes
+    /sys    the virtual filesystem used to communicate with devices
+    /etc    specific configurations
+    /lib    essential shared libs and kernel modules
+    /media  removable media mount points
+    /mnt    temporary mount points for filesystems
+    /opt    optional softwares
+    /sbin   system binaries
+    /srv    data for services
+    /tmp    temporary data
+    /user   secondary hierarchy for users
+    /var    variable data
+    /home   home directories
+    /root   root home directory
+
+=============
+Create/Repair
+=============
+    
+    The filesystem tools are starting with the following prefixes:
+    
+    * mkfs: make/creation tools
+    * fsck: check/repair tools
+
+    To create a filesystem:
+
+        mkfs -t <filesystem type> <device>
+
+    To check/repair the filesystem:
+
+        fsck <device>
+
+        0   - No errors
+        1   - FS corrected
+        2   - System should be rebooted
+        4   - FS errors left uncorrected
+        8   - Operational error
+        16  - Usage or syntax error
+        32  - Fsck canceled by the user
+        128 - Shared-library error
+
+        Useful options:
+
+            -A: global check
+            -R: exclude root path from checking
+            -M: don't run on mounted fs
+            -t: specify the filesystem. Placing 'no' prefix in front of 
+                the fs name (i.e. 'noext3') will exclude that specific filesystem.
+            -y: automatically resolve problems
+            -a: automatically repair damaged portions
+            -n: avoid repair, but prompt only
+
+============
+Partitioning
+============
+
+    * fdisk  <device>: the basic textline tool for partitioning
+    * cfdisk <device>: start an ncurses interface for fdisk
+
+========
+Mounting
+========
+
+    To mount a filesystem in a binary format (.iso, .bin, .extX etc.):
+
+        # mount [-r] -o loop <file> <directory>
+
+    Using -r, the filesystem will be read-only.
