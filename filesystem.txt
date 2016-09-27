@@ -28,52 +28,68 @@ Hierarchy
 Create/Repair
 =============
     
-    To create a filesystem:
+To create a filesystem:
 
-        mkfs -t <filesystem type> <device>
+    mkfs -t <filesystem type> <device>
 
-    To check/repair the filesystem:
+To check/repair the filesystem:
 
-        fsck <device>
+    fsck <device>
 
-        0   - No errors
-        1   - FS corrected
-        2   - System should be rebooted
-        4   - FS errors left uncorrected
-        8   - Operational error
-        16  - Usage or syntax error
-        32  - Fsck canceled by the user
-        128 - Shared-library error
+    0   - No errors
+    1   - FS corrected
+    2   - System should be rebooted
+    4   - FS errors left uncorrected
+    8   - Operational error
+    16  - Usage or syntax error
+    32  - Fsck canceled by the user
+    128 - Shared-library error
 
-        Useful options:
+    Useful options:
 
-            -A: global check
-            -R: exclude root path from checking
-            -M: don't run on mounted fs
-            -t: specify the filesystem. Placing 'no' prefix in front of 
-                the fs name (i.e. 'noext3') will exclude that specific filesystem.
-            -y: automatically resolve problems
-            -a: automatically repair damaged portions
-            -n: avoid repair, but prompt only
+        -A: global check
+        -R: exclude root path from checking
+        -M: don't run on mounted fs
+        -t: specify the filesystem. Placing 'no' prefix in front of 
+            the fs name (i.e. 'noext3') will exclude that specific filesystem.
+        -y: automatically resolve problems
+        -a: automatically repair damaged portions
+        -n: avoid repair, but prompt only
 
 ============
 Partitioning
 ============
 
-    For text-based tool for partitioning:
-        
-        # fdisk [-l] <device>  # use -l to list all the partitions
-        > m                    # show help message
+For text-based tool for partitioning:
+    
+    # fdisk [-l] <device>  # use -l to list all the partitions
+    > m                    # show help message
 
-    For ncurses tool for partitioning:
+For ncurses tool for partitioning:
 
-        # cfdisk <device>
+    # cfdisk <device>
 
 ========
 Mounting
 ========
 
-    To mount a filesystem in a binary format (.iso, .bin, .extX etc.):
+To mount a filesystem in a binary format (.iso, .bin, .extX etc.):
 
-        # mount [-r] -o loop <file> <directory>   # use -r for read-only
+    # mount [-r] -o loop <file> <directory>   # use -r for read-only
+    # mount -t proc  /proc <directory>/proc/
+    # mount -t sysfs /sys  <directory>/sys/
+    # mount -o bind  /dev  <directory>/dev/
+
+========
+Recovery
+========
+
+To recover deleted files, use the testdisk tool:
+
+    # testdisk
+    Create -> Disk /dev/sdX -> Intel -> Advanced -> Select List Option
+
+A file manager will apear, showing deleted files in "red" color.
+
+    'c' over the file to recover -> select output directory -> 'c'
 
