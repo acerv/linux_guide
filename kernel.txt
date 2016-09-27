@@ -6,99 +6,99 @@ Andrea Cervesato <sawk.ita@gmail.com>
 Informations
 ============
 
-    To show the current kernel version:
+To show the current kernel version:
 
-        # uname -r
+    # uname -r
 
 ================
 Modules handling
 ================
 
-    The installed kernel modules are located int the /lib/modules/<kernel version>/build 
-    directory.
+The installed kernel modules are located int the 
+/lib/modules/<kernel version>/build directory.
 
-        # modinfo [-k <kernel version>] <module name>  # info about installed module
-        # insmod <mod name>.ko                         # load a module into the kernel
-        # rmmod <mod name>.ko                          # removed a module from the kernel
-        # modprobe <mod name>                          # load an installed module
-        # lsmod                                        # list all the loaded modules
+    # modinfo [-k <kernel version>] <module>  # info about installed module
+    # insmod <mod name>.ko                    # load a module into the kernel
+    # rmmod <mod name>.ko                     # removed a module from the kernel
+    # modprobe <mod name>                     # load an installed module
+    # lsmod                                   # list all the loaded modules
 
 ============
 Log handling
 ============
 
-    The kernel levels are the following:
+The kernel levels are the following:
 
-        0 - Emergency
-        1 - Alert
-        2 - Critical
-        3 - Error
-        4 - Warning
-        5 - Notice
-        6 - Informations
-        7 - Debug
+    0 - Emergency
+    1 - Alert
+    2 - Critical
+    3 - Error
+    4 - Warning
+    5 - Notice
+    6 - Informations
+    7 - Debug
 
-    dmesg is used to show all kernel messages:
+dmesg is used to show all kernel messages:
 
-        # dmesg
-        # dmesg -n <log level>                # turn off all levels under it
-        # echo "N" > /proc/sys/kernel/printk  # same as the command before
+    # dmesg
+    # dmesg -n <log level>                # turn off all levels under it
+    # echo "N" > /proc/sys/kernel/printk  # same as the command before
 
-    To emulate printk logging level, echo can be used:
+To emulate printk logging level, echo can be used:
 
-        # echo "<N> Message" > /dev/msg       # show messages under N logging level
+    # echo "<N> Message" > /dev/msg       # show messages under N logging level
 
 ==============
 Create modules
 ==============
 
-    A great guide can be found here: 
-    http://tldp.org/LDP/lkmpg/2.6/html/lkmpg.html
+A great guide can be found here: 
+http://tldp.org/LDP/lkmpg/2.6/html/lkmpg.html
 
-    The coding style can be found here:
-    https://www.kernel.org/doc/Documentation/CodingStyle
+The coding style can be found here:
+https://www.kernel.org/doc/Documentation/CodingStyle
 
 ============================
 Makefile for cross compiling
 ============================
 
-    The kernel modules Makefile can be setup for cross compiling as following.
+The kernel modules Makefile can be setup for cross compiling as following.
 
-    Makefile:
-        obj-m += hello.o
-        SYSROOT :=
-        KDIR := $(SYSROOT)/usr/src/kernel
-        ARCH := x86
-        CROSS_COMPILE := i586-poky-linux-
+Makefile:
+    obj-m += hello.o
+    SYSROOT :=
+    KDIR := $(SYSROOT)/usr/src/kernel
+    ARCH := x86
+    CROSS_COMPILE := i586-poky-linux-
 
-        all: build 
+    all: build 
 
-        build:
-           make -C $(KDIR) M=$(PWD) modules
+    build:
+       make -C $(KDIR) M=$(PWD) modules
 
-        clean:
-           make -C $(KDIR) M=$(PWD) clean
+    clean:
+       make -C $(KDIR) M=$(PWD) clean
 
 ======================
 Signing kernel modules
 ======================
 
-    A kernel module signing guide can be found here: 
-    https://www.kernel.org/doc/Documentation/module-signing.txt
+A kernel module signing guide can be found here: 
+https://www.kernel.org/doc/Documentation/module-signing.txt
 
-    Before signing kernel modules, the /usr/src/kernel directory must be configured
-    with the following command:
+Before signing kernel modules, the /usr/src/kernel directory must be configured
+with the following command:
 
-        sudo make -C /usr/src/kernel scripts
+    sudo make -C /usr/src/kernel scripts
 
-    Then it's possible to use a Makefile rule for automatic sign, just in case
-    the kernel module must be loaded manually for tests:
+Then it's possible to use a Makefile rule for automatic sign, just in case
+the kernel module must be loaded manually for tests:
 
-    Makefile sign rule:
-        sign:
-           env LANG=C perl $(KDIR)/scripts/sign-file sha1 \
-                           $(KDIR)/signing_key.priv \
-                           $(KDIR)/signing_key.x509 \
-                           hello.ko
+Makefile sign rule:
+    sign:
+       env LANG=C perl $(KDIR)/scripts/sign-file sha1 \
+                       $(KDIR)/signing_key.priv \
+                       $(KDIR)/signing_key.x509 \
+                       hello.ko
 
-    "env LANG=C" is used to avoid perl warnings.
+"env LANG=C" is used to avoid perl warnings.
