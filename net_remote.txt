@@ -1,0 +1,16 @@
+
+LINUX TOOLS DOCUMENTATION FILE
+Andrea Cervesato <sawk.ita@gmail.com>
+
+==================
+SSH - Secure Shell
+==================
+
+To run commands on target:
+    
+    $ ssh -l <username> <target IP> <command to execute>
+
+To run tests, copy & execute scripts/programs:
+
+    $ scp <script> <username>@<target IP>:/tmp/<script>
+    $ ssh -l <username> <target IP> /tmp/<script>
