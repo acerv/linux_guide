@@ -80,6 +80,15 @@ To mount a filesystem in a binary format (.iso, .bin, .extX etc.):
     # mount -t sysfs /sys  <directory>/sys/
     # mount -o bind  /dev  <directory>/dev/
 
+To mount a network filesystem:
+
+    # mount -o tcp <address>:<remote path> <local path>
+
+To automatically mount a filesystem using /etc/fstab:
+
+    ...
+    /dev/sdX   /data   ext4   defaults,auto   0 0
+
 ========
 Recovery
 ========
