@@ -67,22 +67,23 @@ Both strace and ltrace supports the following arguments:
     -f:       follow forks
     -p <pid>: attaches to a process
 
-===============
-Almost cracking
-===============
+===================
+Overwrite functions
+===================
 
 LD_PRELOAD allows us to add a library to a particular execution 
 of the program. The function in this library will overwrite the actual 
 library function:
 
-    # cc -o my_prog my_prog.c
+    # gcc -o my_prog my_prog.c
     # ./my_prog
 
     Hello there!
     
-    # LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH
-    # LD_PRELOAD=mylibrary.so
-    # ./my_prog
+    # gcc -shared -o mylibrary.so fake_lib.c -ldl
+    # LD_LIBRARY_PATH=./:$LD_LIBRARY_PATH \
+      LD_PRELOAD=mylibrary.so \
+      ./my_prog
 
     I hate you!
 
