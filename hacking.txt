@@ -67,6 +67,21 @@ Both strace and ltrace supports the following arguments:
     -f:       follow forks
     -p <pid>: attaches to a process
 
+=========
+Stripping
+=========
+
+Stripping is used to remove symbols table and to reduce executables files size.
+This procedure can be used to make executables less debuggable.
+
+    $ strip -s <executable> [-o <new exec>] # remove symbols table
+    $ strip -s -p <executable>              # remove symbols and preserve date
+    $ strip --strip-debug <executable>      # remove debug symbols
+    $ strip -R <section> <executable>       # remove a section (ie .gnu.version)
+    $ strip --strip-unneeded <executable>   # remove unneeded stuff
+    $ strip -s -K <symbol> <executable>     # remove a symbol from stripping
+    $ strip -N <symbol> <executable>        # remove a particular symbol
+
 ===================
 Overwrite functions
 ===================
