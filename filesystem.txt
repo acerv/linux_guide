@@ -89,6 +89,14 @@ To automatically mount a filesystem using /etc/fstab:
     ...
     /dev/sdX   /data   ext4   defaults,auto   0 0
 
+====
+CPIO
+====
+
+To extract a cpio image inside the current directory:
+    
+    $ cpio -idv < file.cpio
+
 ========
 Recovery
 ========
