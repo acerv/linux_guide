@@ -41,3 +41,10 @@ with GPIO0:
     # echo out > direction  // select the gpio0 direction
     # echo 1 > value        // set gpio0 output value to 1
 
+====
+USB
+====
+
+To get the vendor/product ID:
+
+    sudo cat /sys/kernel/debug/usb/devices | grep -E "^([TSPD]:.*|)$"
