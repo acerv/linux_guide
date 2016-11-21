@@ -110,3 +110,14 @@ A file manager will apear, showing deleted files in "red" color.
 
     'c' over the file to recover -> select output directory -> 'c'
 
+==================
+Installation Setup
+==================
+
+The following partitioning scheme can be used as reference for a server setup:
+
+    * /boot   500MB   Primary
+    * /        30GB   Primary
+    * /var     50GB   Logical
+    * swap      4GB   Logical
+    * /home   165GB   Logical
