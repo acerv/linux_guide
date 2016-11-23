@@ -56,7 +56,6 @@ The coding style can be found [here](https://www.kernel.org/doc/Documentation/Co
 The kernel modules Makefile can be setup for cross compiling as following.
 
 ```
-Makefile:
     obj-m += hello.o
     SYSROOT :=
     KDIR := $(SYSROOT)/usr/src/kernel
