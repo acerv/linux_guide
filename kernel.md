@@ -83,7 +83,6 @@ with the following command:
 Then it's possible to use a Makefile rule for automatic sign, just in case
 the kernel module must be loaded manually for tests:
 ```
-Makefile sign rule:
     sign:
        env LANG=C perl $(KDIR)/scripts/sign-file sha1 \
                        $(KDIR)/signing_key.priv \
