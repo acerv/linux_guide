@@ -1,4 +1,4 @@
-# Hacking tools
+# Hacking stuff 
 
 ## ELF - Executable and Linkable Format
 
