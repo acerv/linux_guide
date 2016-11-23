@@ -58,26 +58,26 @@ To check/repair the filesystem:
 
 For text-based tool for partitioning:
 ```sh
-    # fdisk [-l] <device>  # use -l to list all the partitions
+    fdisk [-l] <device>  # use -l to list all the partitions
     > m                    # show help message
 ```
 For ncurses tool for partitioning:
 ```sh
-    # cfdisk <device>
+    cfdisk <device>
 ```
 
 ## Mounting
 
 To mount a filesystem in a binary format (.iso, .bin, .extX etc.):
 ```sh
-    # mount [-r] -o loop <file> <directory>   # use -r for read-only
-    # mount -t proc  /proc <directory>/proc/
-    # mount -t sysfs /sys  <directory>/sys/
-    # mount -o bind  /dev  <directory>/dev/
+    mount [-r] -o loop <file> <directory>   # use -r for read-only
+    mount -t proc  /proc <directory>/proc/
+    mount -t sysfs /sys  <directory>/sys/
+    mount -o bind  /dev  <directory>/dev/
 ```
 To mount a network filesystem:
 ```sh
-    # mount -o tcp <address>:<remote path> <local path>
+    mount -o tcp <address>:<remote path> <local path>
 ```
 To automatically mount a filesystem using /etc/fstab:
 ```
@@ -89,13 +89,13 @@ To automatically mount a filesystem using /etc/fstab:
 
 To extract a cpio image inside the current directory:
 ```sh 
-    $ cpio -idv < file.cpio
+    cpio -idv < file.cpio
 ```
 ## Recovery
 
 To recover deleted files, use the testdisk tool:
 ```
-    # testdisk
+    testdisk
     Create -> Disk /dev/sdX -> Intel -> Advanced -> Select List Option
 ```
 A file manager will apear, showing deleted files in "red" color.

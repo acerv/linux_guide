@@ -4,12 +4,12 @@
 
 To redirecto the output to a file, and show the output on terminal as well:
 ```sh
-    $ command | tee [-a] stdout.log
+    command | tee [-a] stdout.log
 ```
 
 The following command works always, even if the command is redirecting stdout:
 ```sh
-    $ command > >(tee stdout.log) 2> >(tee stderr.log >&2)
+    command > >(tee stdout.log) 2> >(tee stderr.log >&2)
 ```
 
 ## Switch case
