@@ -55,9 +55,8 @@ To trace system functions calls (ordered):
     $ strace <executable>
 ```
 Both strace and ltrace supports the following arguments:
-    
-    * -f:       follow forks
-    * -p <pid>: attaches to a process
+* -f:       follow forks
+* -p <pid>: attaches to a process
 
 ## Stripping
 
