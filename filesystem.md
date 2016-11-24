@@ -25,12 +25,11 @@
 ## Create/Repair
 
 To create a filesystem:
-```sh
+
     mkfs -t <filesystem type> <device>
-```
 
 To check/repair the filesystem:
-```
+
     fsck <device>
 
     0   - No errors
@@ -52,56 +51,53 @@ To check/repair the filesystem:
         -y: automatically resolve problems
         -a: automatically repair damaged portions
         -n: avoid repair, but prompt only
-```
 
 ## Partitioning
 
 For text-based tool for partitioning:
-```sh
+
     fdisk [-l] <device>  # use -l to list all the partitions
     > m                    # show help message
-```
+
 For ncurses tool for partitioning:
-```sh
+
     cfdisk <device>
-```
 
 ## Mounting
 
 To mount a filesystem in a binary format (.iso, .bin, .extX etc.):
-```sh
+
     mount [-r] -o loop <file> <directory>   # use -r for read-only
     mount -t proc  /proc <directory>/proc/
     mount -t sysfs /sys  <directory>/sys/
     mount -o bind  /dev  <directory>/dev/
-```
+
 To mount a network filesystem:
-```sh
+
     mount -o tcp <address>:<remote path> <local path>
-```
+
 To automatically mount a filesystem using /etc/fstab:
-```
+
     ...
     /dev/sdX   /data   ext4   defaults,auto   0 0
-```
+
 
 ## CPIO
 
 To extract a cpio image inside the current directory:
-```sh 
+ 
     cpio -idv < file.cpio
-```
+
 ## Recovery
 
 To recover deleted files, use the testdisk tool:
-```
+
     testdisk
     Create -> Disk /dev/sdX -> Intel -> Advanced -> Select List Option
-```
+
 A file manager will apear, showing deleted files in "red" color.
-```
+
     'c' over the file to recover -> select output directory -> 'c'
-```
 
 ## Installation Setup
 
