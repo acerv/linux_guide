@@ -1,5 +1,16 @@
 # Git handling
 
+## Useful commands
+
+To modify latest commit string:
+```sh
+    git commit --amend
+```
+To delete the latest 5 remote commits in the master branch:
+```sh
+    git push -f origin HEAD~5:master
+```
+
 ## Perforce support
 
 To install `git p4` command:
