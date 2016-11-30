@@ -6,6 +6,11 @@ All devices can be found under */dev* and they are created by kernel modules.
 
 They communicate through */sys* virtual filesystem.
 
+## RAM
+To know the RAM type and size:
+
+    sudo dmidecode --type 17
+
 ## Serial communication
 The serial ports start with *tty* and *serial* prefixes under */dev* directory.
 Useful tools for serial communication are:
