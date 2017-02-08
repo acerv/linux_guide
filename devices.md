@@ -17,6 +17,7 @@ Useful tools for serial communication are:
 
     minicom -s # configure service and then launch minicom
     minicom
+    minicom -D /dev/ttyS0 # overwrite device port
     CTRL + A -> q to exit
 
     cu -l /dev/<device> -s <baud rate speed>
@@ -24,6 +25,10 @@ Useful tools for serial communication are:
 
     screen /dev/<device> <speed>,<packet type>
     screen /dev/ttyS0 19200,cs8
+
+To setup a serial port:
+    
+    stty -F /dev/ttyS0 speed 921600 cs8
 
 ## GPIO communication
 The following example is using */sys/class* virtual filesystem to communicate 
