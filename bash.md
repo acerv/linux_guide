@@ -42,3 +42,10 @@ The number of elements:
         echo ${array[i]}
     done
 
+## Buffers
+To read a buffer continuously:
+
+    while IFS= read -r line
+    do
+        ...
+    done </dev/ttyS0
