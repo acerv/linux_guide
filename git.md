@@ -26,6 +26,7 @@ To clone a depot locally:
 Create the SSH keys. You may like to change `myuser@myhostname` as you wish:
 
     ssh-keygen -C "myuser@myhostname" -f ~/.ssh/gitolite
+    chmod 0600 ~/.ssh/gitolite* # SSH doesn't accept 0640 permissions
 
 Then configure SSH to reach the gitolite server using the right credentials:
 
