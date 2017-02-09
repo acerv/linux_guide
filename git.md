@@ -21,3 +21,17 @@ To clone a depot locally:
 
     git p4 clone //depot/mydepot
 
+## Setup gitolite credentials
+
+Create the SSH keys. You may like to change `myuser@myhostname` as you wish:
+
+    ssh-keygen -C "myuser@myhostname" -f ~/.ssh/gitolite
+
+Then configure SSH to reach the gitolite server using the right credentials:
+
+    # add this in ~/.ssh/config
+    hostname gitolite_server
+        user myuser
+        hostname gitolite_server_ip
+        identityfile ~/.ssh/gitolite
+
