@@ -30,6 +30,11 @@ To setup a serial port:
     
     stty -F /dev/ttyS0 speed 921600 cs8
 
+Create a serial loopback (`/dev/serloop0` echo `/dev/serloop1`):
+
+    socat -d -d pty,raw,echo=0,link=/dev/serloop0 \
+                pty,raw,echo=0,link=/dev/serloop1
+
 ## GPIO communication
 The following example is using */sys/class* virtual filesystem to communicate 
 with GPIO0:
