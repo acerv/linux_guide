@@ -36,3 +36,16 @@ Then configure SSH to reach the gitolite server using the right credentials:
         hostname gitolite_server_ip
         identityfile ~/.ssh/gitolite
 
+## Creating a patch
+
+Create a branch before:
+
+    git branch fixed_src
+    
+Switch from master to fixed_src:
+
+    git checkout fixed_src
+    
+Do your modification then use:
+
+    git format-patch -s -n master..fixed_src
