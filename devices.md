@@ -18,6 +18,7 @@ Useful tools for serial communication are:
     minicom -s # configure service and then launch minicom
     minicom
     minicom -D /dev/ttyS0 # overwrite device port
+    minicom -C capture.log -D /dev/ttyS0 # to capture strings from serial port
     CTRL + A -> q to exit
 
     cu -l /dev/<device> -s <baud rate speed>
