@@ -41,3 +41,7 @@ Then configure SSH to reach the gitolite server using the right credentials:
 To create a patch, commit changes and use the following command:
 
     git format-patch HEAD~
+    
+To apply the patch:
+    
+    git apply --stat fix_empty_poster.patch
