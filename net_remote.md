@@ -14,3 +14,12 @@ To run tests, copy & execute scripts/programs:
 To run a script on a linux target:
 
     ssh <username>@<target IP> 'bash -s' < local-script.sh
+
+To authorize SSH access without user & pass credentials:
+
+    # on client
+    # create the key
+    ssh-keygen -t rsa -b 4096
+    
+    # transfer client key to the host
+    ssh-copy-id <user>@<ip>
