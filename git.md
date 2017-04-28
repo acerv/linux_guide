@@ -44,4 +44,5 @@ To create a patch, commit changes and use the following command:
     
 To apply the patch:
     
-    git apply --stat fix_empty_poster.patch
+    git apply --stat fix_empty_poster.patch # check validity
+    git apply fix_empty_poster.patch        # apply patch
