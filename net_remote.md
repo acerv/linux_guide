@@ -1,4 +1,4 @@
-# Network remote tools
+# Networking tools
 
 ## SSH - Secure Shell
 
@@ -23,3 +23,15 @@ To authorize SSH access without user & pass credentials:
     
     # transfer client key to the host
     ssh-copy-id <user>@<ip>
+
+## Creating a bridge
+
+Create the bridge network interface:
+
+     brctl addbr br0
+     
+Bridge eth1 over eth0 through br0:
+
+     brctl addif br0 eth0 eth1
+     ip link set br0 up
+     dhclient br0
