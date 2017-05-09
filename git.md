@@ -16,10 +16,30 @@ To install `git p4` command:
 
     wget http://git.kernel.org/cgit/git/git.git/plain/git-p4.py?id=master -O git-p4 && chmod +x git-p4
     sudo mv git-p4 /usr/lib/git-core/
+    
+To setup git-p4:
+
+    git config --global git-p4.user <your_p4_user>
+    git config --global git-p4.password <your_p4_password>
+    git config --global git-p4.port <your_p4_port>
+    
+To create a workspace:
+
+    p4 -u <your_p4_user> -P <your_p4_password> -c <my_workspace> .
+    git config --local git-p4.client <my_workspace>
 
 To clone a depot locally:
 
     git p4 clone //depot/mydepot
+    
+To submit modifications on repo:
+
+    # do your modifications + add/commit
+    git p4 submit # --shelve if needed
+    
+To update the current repo:
+
+    git p4 sync
 
 ## Setup gitolite credentials
 
