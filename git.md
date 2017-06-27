@@ -9,6 +9,10 @@ To modify latest commit string:
 To delete the latest 5 remote commits in the master branch:
 
     git push -f origin HEAD~5:master
+    
+To commit with a different datetime:
+
+    git commit --date="Mon Jun 25 16:00 +0100"
 
 ## Perforce support
 
