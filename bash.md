@@ -38,7 +38,7 @@ The number of elements:
 
     num_of_elements=${#array[*]}
 
-    for (( i = 0 ; i < num_of_elements; i++ )): do
+    for (( i = 0 ; i < num_of_elements; i++ )); do
         echo ${array[i]}
     done
 
